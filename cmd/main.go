@@ -5,31 +5,13 @@ import (
 	discordBot "github.com/sleeyax/aternos-discord-bot"
 	"github.com/sleeyax/aternos-discord-bot/database"
 	"log"
-	"net/http"
 	"net/url"
 	"os"
 	"os/signal"
 	"syscall"
 )
-func alive() {
- 
-    // API routes
-    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-        fmt.Fprintf(w, "Hello world from GfG")
-    })
-    http.HandleFunc("/hi", func(w http.ResponseWriter, r *http.Request) {
-        fmt.Fprintf(w, "Hi")
-    })
- 
-    port := ":5000"
-    fmt.Println("Server is running on port" + port)
- 
-    // Start server on port specified above
-    log.Fatal(http.ListenAndServe(port, nil))
-}
 
 func main() {
-	go alive()
 	// Read configuration settings from environment variables
 	token := os.Getenv("DISCORD_TOKEN")
 	session := os.Getenv("ATERNOS_SESSION")
